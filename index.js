@@ -1,10 +1,9 @@
 //Em xin phép note hơi nhiều để tiện đọc code ạ
 var fetched = 'false'; //Đặt để đảm bảo lấy hàng thành công
 let product = null; 
-async function getProduct (){
+function getProduct (){
     if(fetched == 'false'){
-        product = await fetch ("https://dummyapi-0uzr.onrender.com/products");
-        product = await product.json();        
+        product = fetch ("https://dummyapi-0uzr.onrender.com/products");       
         let fetched = 'true'; // nếu lấy được hàng thì chuyển qua true
         const data = JSON.stringify(product);
         localStorage.setItem("Product",data);
@@ -14,6 +13,7 @@ async function getProduct (){
     }
 }
 console.log(getProduct()); 
+
 
 
 //Nhiệm vụ là lấy product và đưa nó vào hàm bài trước
@@ -51,5 +51,6 @@ function choose_product(product) {
     product.unit_price = autocapitalize(product.unit_price); //viết hoa unit_price
 }
 const sec1 = document.getElementById('6644dff108d195b1abbd4f73');
-console.log (a[1]);
+console.log(sec1);
+
 
