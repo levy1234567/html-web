@@ -48,7 +48,7 @@ function choose_product(product) { //tuỳ hàng nhập vô sẽ chạy
     }
     product.price = format_price(product.price); //tự thêm dấu chấm vô price
     product.unit_price = autocapitalize(product.unit_price); //viết hoa unit_price
-    return 
+    
 }
 const sec1 = document.getElementById('6644dff108d195b1abbd4f73');
 console.log(sec1);
