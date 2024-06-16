@@ -1,11 +1,12 @@
 //Em xin phép note hơi nhiều để tiện đọc code ạ
-var fetched = 'false'; //Đặt để đảm bảo lấy hàng thành công
+let fetched = 'false'; //Đặt để đảm bảo lấy hàng thành công
 let product = null; 
-function getProduct (){
+async function getProduct (){
     if(fetched == 'false'){
-        product = fetch ("https://dummyapi-0uzr.onrender.com/products");       
-        let fetched = 'true'; // nếu lấy được hàng thì chuyển qua true
-        const data = JSON.stringify(product);
+        product = await fetch ("https://dummyapi-0uzr.onrender.com/products");
+        product = await product.json();        
+        fetched = 'true'; // nếu lấy được hàng thì chuyển qua true
+        data = JSON.stringify(product);
         localStorage.setItem("Product",data);
         console.log (product);
         console.log(fetched);
@@ -14,33 +15,31 @@ function getProduct (){
 }
 console.log(getProduct()); 
 
-
-
 //Nhiệm vụ là lấy product và đưa nó vào hàm bài trước
 //unit_price và tag không in hoa chữ cái đầu =((
 //price là số viết liền 
 
 function autocapitalize (unit_price_or_tag) { // Khi nhập tham số thì nó tự động viết hoa chữ cái đầu
-    const data1 = unit_price_or_tag.split (" "); 
+    const data = unit_price_or_tag.split (" "); 
     // Split để text khi nhập sẽ tự động tách (tham khảo thêm trên gg)
     // Khúc này chỉ tách chứ chưa in hoa
-    for (let i = 0; i< data1.length; i++){ // Cho i chạy đến hết độ dài chữ
-        data1[i] = data1[i][0].toUpperCase() + data1[i].substr(1).toLowerCase();
+    for (let i = 0; i< data.length; i++){ // Cho i chạy đến hết độ dài chữ
+        data[i] = data[i][0].toUpperCase() + data[i].substr(1).toLowerCase();
         //Khi i chạy thì ta lấy hết giá trị i đưa thành array của data
         //Lấy index đầu (số 0) in hoa (toUpperCase)
         //Lấy các index sau (từ 1 trở đi)(substr) rồi viết thường (toLowerCase)
     }
-    return data1.join(" "); //data đang là array[ele1,ele2,...] nên cần join lại thành 1 str
+    return data.join(" "); //data đang là array[ele1,ele2,...] nên cần join lại thành 1 str
 }
 
 function format_price(price){ //nhìn hơi thủ công nhưng mà nó dễ hiểu =))
-    let data2 = Array.from(String(price));
-    data2.splice(1,0,".");
-    data2.splice(5,0,".");
-    return data2.join(" ");
+    let data = Array.from(String(price));
+    data.splice(1,0,".");
+    data.splice(5,0,".");
+    return data.join(" ");
 }
 
-function choose_product(product) { 
+function choose_product(product) { //tuỳ hàng nhập vô sẽ chạy
     if (product.tag) { //lấy 'key' tag của product
         product.tag = autocapitalize(product.tag) //viết hoa tag
     }
@@ -52,5 +51,3 @@ function choose_product(product) {
 }
 const sec1 = document.getElementById('6644dff108d195b1abbd4f73');
 console.log(sec1);
-
-
