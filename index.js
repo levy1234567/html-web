@@ -1,18 +1,20 @@
 //Em xin phép note hơi nhiều để tiện đọc code ạ
-let fetched = 'false'; //Đặt để đảm bảo lấy hàng thành công
+var fetched = 'false'; //Đặt để đảm bảo lấy hàng thành công
 let product = null; 
 async function getProduct (){
     if(fetched == 'false'){
         product = await fetch ("https://dummyapi-0uzr.onrender.com/products");
         product = await product.json();        
-        fetched = 'true'; // nếu lấy được hàng thì chuyển qua true
-        data = JSON.stringify(product);
+        let fetched = 'true'; // nếu lấy được hàng thì chuyển qua true
+        const data = JSON.stringify(product);
+        localStorage.setItem("Product",data);
         console.log (product);
         console.log(fetched);
         return product;
     }
 }
 console.log(getProduct()); 
+
 
 //Nhiệm vụ là lấy product và đưa nó vào hàm bài trước
 //unit_price và tag không in hoa chữ cái đầu =((
@@ -48,5 +50,6 @@ function choose_product(product) {
     product.price = format_price(product.price); //tự thêm dấu chấm vô price
     product.unit_price = autocapitalize(product.unit_price); //viết hoa unit_price
 }
-const a = document.getElementById('sec1-img');
-console.log(a);
+const sec1 = document.getElementById('6644dff108d195b1abbd4f73');
+console.log (a[1]);
+
