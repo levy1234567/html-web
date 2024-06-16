@@ -20,23 +20,23 @@ console.log(getProduct());
 //price là số viết liền 
 
 function autocapitalize (unit_price_or_tag) { // Khi nhập tham số thì nó tự động viết hoa chữ cái đầu
-    const data = unit_price_or_tag.split (" "); 
+    const data1 = unit_price_or_tag.split (" "); 
     // Split để text khi nhập sẽ tự động tách (tham khảo thêm trên gg)
     // Khúc này chỉ tách chứ chưa in hoa
-    for (let i = 0; i< data.length; i++){ // Cho i chạy đến hết độ dài chữ
-        data[i] = data[i][0].toUpperCase() + data[i].substr(1).toLowerCase();
+    for (let i = 0; i< data1.length; i++){ // Cho i chạy đến hết độ dài chữ
+        data1[i] = data1[i][0].toUpperCase() + data1[i].substr(1).toLowerCase();
         //Khi i chạy thì ta lấy hết giá trị i đưa thành array của data
         //Lấy index đầu (số 0) in hoa (toUpperCase)
         //Lấy các index sau (từ 1 trở đi)(substr) rồi viết thường (toLowerCase)
     }
-    return data.join(" "); //data đang là array[ele1,ele2,...] nên cần join lại thành 1 str
+    return data1.join(" "); //data đang là array[ele1,ele2,...] nên cần join lại thành 1 str
 }
 
 function format_price(price){ //nhìn hơi thủ công nhưng mà nó dễ hiểu =))
-    let data = Array.from(String(price));
-    data.splice(1,0,".");
-    data.splice(5,0,".");
-    return data.join(" ");
+    let data2 = Array.from(String(price));
+    data2.splice(1,0,".");
+    data2.splice(5,0,".");
+    return data2.join(" ");
 }
 
 function choose_product(product) { //tuỳ hàng nhập vô sẽ chạy
@@ -48,6 +48,6 @@ function choose_product(product) { //tuỳ hàng nhập vô sẽ chạy
     }
     product.price = format_price(product.price); //tự thêm dấu chấm vô price
     product.unit_price = autocapitalize(product.unit_price); //viết hoa unit_price
+    
 }
-const sec1 = document.getElementById('6644dff108d195b1abbd4f73');
-console.log(sec1);
+confirm
