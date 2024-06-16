@@ -49,4 +49,4 @@ function choose_product(product) {
     product.unit_price = autocapitalize(product.unit_price); //viết hoa unit_price
 }
 const a = document.getElementById('sec1-img');
-console.log = (a);
+console.log(a);
