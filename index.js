@@ -32,11 +32,15 @@ function autocapitalize (unit_price_or_tag) { // Khi nhập tham số thì nó t
     return data1.join(" "); //data đang là array[ele1,ele2,...] nên cần join lại thành 1 str
 }
 
-function format_price(price){ //nhìn hơi thủ công nhưng mà nó dễ hiểu =))
-    let data2 = Array.from(String(price));
-    data2.splice(1,0,".");
-    data2.splice(5,0,".");
-    return data2.join(" ");
+function reverse(s){
+    return s.split("").reverse().join("");
+}
+
+function change_price_format(price) {
+    price = price.toString();
+    price = reverse(price);
+    price = price.match(/.{1,3}/g);
+    return reverse(price.join("."))
 }
 
 function choose_product(product) { //tuỳ hàng nhập vô sẽ chạy
